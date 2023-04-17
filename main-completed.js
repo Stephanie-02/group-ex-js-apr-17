@@ -27,6 +27,17 @@ class Data {
     return result;
   }
 
+  static getPrimes(dataObj) {
+    let result = [];
+    for (let i = 0; i < dataObj.data.length; i++) {
+      const element = dataObj.data[i];
+      if (isPrime(element)) {
+        result.push(element);
+      }
+    }
+    return result;
+  }
+
   get data() {
     return this._data;
   }
@@ -42,10 +53,51 @@ class Data {
   getOurData() {
     return this._data;
   }
+
+  getMax() {
+    let max = -1;
+    for (let i = 0; i < this._data.length; i++) {
+      const element = this._data[i];
+      if (element > max) {
+        max = element;
+      }
+    }
+    return max;
+  }
+
+  changeToReverse() {
+    this._data.sort((a, b) => b - a);
+  }
+
+  getInstance() {}
+}
+
+class NotData {
+  dontDoAnything() {}
 }
 
 let firstObj = new Data(dataArr);
-let secondObj = new Data([3, 5, 2345, 24636]);
+let secondObj = new Data([3, 5, 2347, 24637]);
 let bothDataArr = Data.combine(firstObj, secondObj);
+let notObject = new NotData();
 
-console.log(bothDataArr);
+// console.log(firstObj);
+// console.log(firstObj.getMax());
+// console.log(secondObj.getMax());
+
+// console.log(firstObj);
+// firstObj.changeToReverse();
+// console.log(firstObj);
+
+// let justPrimes = Data.getPrimes(firstObj);
+// console.log(justPrimes);
+
+let var1 = [];
+
+firstObj = new NotData();
+
+if (firstObj instanceof Data) {
+  firstObj.changeToReverse();
+} else if (firstObj instanceof NotData) {
+  firstObj.dontDoAnything();
+}

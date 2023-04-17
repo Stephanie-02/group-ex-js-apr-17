@@ -14,5 +14,3 @@ Make a class method that reverse sorts the internal _data.
 
 Make a static class method that extracts the prime numbers from the class _data.
 
-Make a class method that returns the instanceof of the data.
-
