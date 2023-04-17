@@ -10,3 +10,71 @@ function isPrime(num) {
     if (num % i == 0 || num % (i + 2) == 0) return false;
   return true;
 }
+
+class DataClass {
+  constructor(arr) {
+    this._data = arr;
+  }
+
+  get data() {
+    return this._data;
+  }
+
+  set data(param1) {
+    this._data = param1;
+  }
+
+  static combine(obj1, obj2) {
+    return obj1.data.concat(obj2.data);
+  }
+
+  static getPrimes(obj1) {
+    let result = [];
+    for (let i = 0; i < obj1.data.length; i++) {
+      const element = obj1.data[i];
+      if (isPrime(element)) {
+        result.push(element);
+      }
+    }
+    return result;
+  }
+
+  reverseSort() {
+    this._data.sort((a, b) => b - a);
+  }
+
+  getMax() {
+    let max = -1;
+    for (let i = 0; i < this._data.length; i++) {
+      const element = this._data[i];
+      if (element > max) {
+        max = element;
+      }
+    }
+    return max;
+  }
+}
+
+class NotData {}
+
+let firstObj = new DataClass(dataArr);
+let secondObj = new DataClass([3, 6, 29, 300]);
+let notObject = new NotData();
+
+if (firstObj instanceof DataClass) {
+  console.log(true);
+} else {
+  console.log(false);
+}
+
+// console.log(firstObj);
+// console.log(secondObj);
+
+// console.log(firstObj.getMax());
+// console.log(secondObj);
+// secondObj.reverseSort();
+// console.log(secondObj);
+
+// let result = DataClass.combine(firstObj, secondObj);
+// let result = DataClass.getPrimes(firstObj);
+// console.log(result);
